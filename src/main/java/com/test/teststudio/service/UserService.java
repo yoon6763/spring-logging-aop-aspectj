@@ -1,16 +1,24 @@
-package com.test.teststudio;
+package com.test.teststudio.service;
 
+import com.test.teststudio.Logging;
+import com.test.teststudio.User;
+import com.test.teststudio.UserRepository;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
+@Logging
 public class UserService {
 
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
 
-    public User getUser(Long id) {
-        return userRepository.findById(id);
+    @Logging
+    public User getUser(Long userId) {
+        return userRepository.findById(userId);
     }
 
     public void saveUser(User user) {
