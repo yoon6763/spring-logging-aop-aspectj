@@ -13,12 +13,12 @@ import java.lang.reflect.Parameter;
 
 @Aspect
 @Component
-public class LoggingAspect {
+public class LoggingAspectV2 {
 
-    private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);
+    private static final Logger log = LoggerFactory.getLogger(LoggingAspectV2.class);
 
-    // @Logging이 붙은 클래스 또는 메서드에 AOP 적용
-    @Before("@within(com.test.teststudio.Logging) || @annotation(com.test.teststudio.Logging)")
+    // AspectJ 표현식을 사용해 클래스나 메서드에 @Logging 어노테이션이 있는 경우 처리
+    @Before("execution(* *(..)) && (@within(com.test.teststudio.Logging) || @annotation(com.test.teststudio.Logging))")
     public void logBeforeMethod(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
@@ -40,3 +40,4 @@ public class LoggingAspect {
                 method.getName(), sb.toString());
     }
 }
+
