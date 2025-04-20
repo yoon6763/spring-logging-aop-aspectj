@@ -1,4 +1,4 @@
-package com.test.teststudio.service;
+package com.test.teststudio;
 
 import org.springframework.stereotype.Service;
 

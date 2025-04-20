@@ -26,6 +26,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.aspectj:aspectjrt:1.9.20.1'
     implementation 'org.aspectj:aspectjweaver'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -35,4 +36,8 @@ dependencies {
 
 tasks.withType(JavaCompile).configureEach {
     options.compilerArgs.add("-parameters")
+}
+
+bootRun {
+    jvmArgs = ["-javaagent:${classpath.find { it.name.contains("aspectjweaver") }.absolutePath}"]
 }

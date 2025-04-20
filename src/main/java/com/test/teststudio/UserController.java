@@ -1,6 +1,5 @@
 package com.test.teststudio;
 
-import com.test.teststudio.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

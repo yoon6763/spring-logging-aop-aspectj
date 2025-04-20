@@ -1,0 +1,13 @@
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN"
+        "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <weaver options="-verbose">
+        <!-- 모든 클래스에 적용 -->
+        <include within="com.test.teststudio..*"/>
+    </weaver>
+
+    <aspects>
+        <aspect name="com.test.teststudio.LoggingAspectV2"/>
+    </aspects>
+</aspectj>

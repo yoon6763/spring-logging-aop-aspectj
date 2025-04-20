@@ -1,8 +1,5 @@
-package com.test.teststudio.service;
+package com.test.teststudio;
 
-import com.test.teststudio.Logging;
-import com.test.teststudio.User;
-import com.test.teststudio.UserRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,14 +15,22 @@ public class UserService {
 
     @Logging
     public User getUser(Long userId) {
+        testMethod(1);
         return userRepository.findById(userId);
     }
 
+    @Logging
+    private void testMethod(int a) {
+
+    }
+
+    @Logging
     public void saveUser(User user) {
         validateUser(user);
         userRepository.save(user);
     }
 
+    @Logging
     private void validateUser(User user) {
         if (user.getName() == null || user.getName().isEmpty()) {
             throw new IllegalArgumentException("Name is required");
